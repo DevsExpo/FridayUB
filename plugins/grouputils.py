@@ -196,7 +196,7 @@ async def ujwalzombie(client, message):
         async for member in client.iter_chat_members(message.chat.id):
             if member.user.is_deleted:
                 try:
-                    await client.kick_chat_member(message.chat.id, member.user.id)
+                    await client.ban_chat_member(message.chat.id, member.user.id)
                     s += 1
                 except:
                     f += 1
@@ -247,7 +247,7 @@ async def ban_world(client, message):
         await bun.edit(engine.get_string("USER_MISSING").format(e))
         return
     try:
-        await client.kick_chat_member(message.chat.id, int(user_.id))
+        await client.ban_chat_member(message.chat.id, int(user_.id))
     except BaseException as e:
         await bun.edit(engine.get_string("FAILED_ADMIN_ACTION").format("Ban", e))
         return
